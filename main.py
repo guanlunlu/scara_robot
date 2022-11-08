@@ -15,7 +15,6 @@ ev3 = EV3Brick()
 
 class Scara():
     def __init__(self):
-        # self.ev3 = EV3Brick()
         self.motor_a = Motor(Port.A, Direction.COUNTERCLOCKWISE, gears=[1, 5])
         self.motor_b = Motor(Port.B, Direction.COUNTERCLOCKWISE, gears=[1, 5])
         self.motor_c = Motor(Port.C, Direction.COUNTERCLOCKWISE)
