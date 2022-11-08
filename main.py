@@ -10,39 +10,8 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 import math
 import time
 import word_trajectory as word
-# from threading import Timer
 
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
-
-# Create your objects here.
 ev3 = EV3Brick()
-
-# motor_a = Motor(Port.A, gears=[1, 5])
-# motor_b = Motor(Port.B, gears=[1, 5])
-# watch = StopWatch()
-
-# motor_a.run_time(-30, 1000, Stop.COAST, wait=True)
-# motor_b.run_time(-30, 1000, Stop.COAST, wait=True)
-
-
-# prev_time = 0
-# iter_time = 0
-
-# while iter_time < 9:
-#     print(iter_time)
-#     motor_a.run(-10)
-#     motor_b.run(-10)
-#     # motor_a.run_time(-10, 1000, Stop.COAST, wait=True)
-#     # motor_b.run_time(-10, 1000, Stop.COAST, wait=True)
-#     iter_time += watch.time()/1000 - prev_time
-#     prev_time = watch.time()/1000
-# motor.run_target(500, -90)
-# time.sleep(10)
-
-
-# Write your program here.
-# ev3.speaker.beep()
 
 class Scara():
     def __init__(self):
@@ -146,10 +115,6 @@ class Scara():
         x, y = cart_pose
         L3 = math.sqrt(pow(x, 2)+pow(y, 2))
         phi = math.atan2(y, x)
-        # print("x,y ", (x,y))
-        # print("phi ",math.degrees(phi))
-        # print("L3 ", L3)
-        # print("cos(alpha_1) ", (pow(self.L1, 2) + pow(L3, 2) - pow(self.L2, 2))/(2*self.L1*L3))
         alpha_1 = math.acos((pow(self.L1, 2) + pow(L3, 2) - pow(self.L2, 2))/(2*self.L1*L3))
         alpha_2 = math.acos((pow(self.L1, 2) + pow(self.L2, 2) - pow(L3, 2))/(2*self.L1*self.L2))
         theta_1 = math.degrees(phi - alpha_1)
@@ -159,6 +124,5 @@ class Scara():
 
 if __name__ == '__main__':
     scara = Scara()
-    # scara.timer()
     scara.controller()
     pass
